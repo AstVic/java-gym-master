@@ -20,9 +20,9 @@ public class TimetableTest {
 
         //Проверить, что за понедельник вернулось одно занятие
         int count = 0;
-        TreeMap<TimeOfDay, ArrayList<TrainingSession>> result = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
+        Map<TimeOfDay, List<TrainingSession>> result = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
         if (!result.isEmpty()) {
-            for (TimeOfDay timeOfDay : result.navigableKeySet()) {
+            for (TimeOfDay timeOfDay : result.keySet()) {
                 count += result.get(timeOfDay).size();
             }
         }
@@ -59,9 +59,9 @@ public class TimetableTest {
 
         // Проверить, что за понедельник вернулось одно занятие
         int count = 0;
-        TreeMap<TimeOfDay, ArrayList<TrainingSession>> result = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
+        Map<TimeOfDay, List<TrainingSession>> result = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
         if (!result.isEmpty()) {
-            for (TimeOfDay timeOfDay : result.navigableKeySet()) {
+            for (TimeOfDay timeOfDay : result.keySet()) {
                 count += result.get(timeOfDay).size();
             }
         }
@@ -157,7 +157,7 @@ public class TimetableTest {
                 new TimeOfDay(15, 0)
         );
 
-        TreeMap<TimeOfDay, ArrayList<TrainingSession>> result = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
+        Map<TimeOfDay, List<TrainingSession>> result = timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY);
 
         Assertions.assertEquals(expectedOrder, new ArrayList<>(result.keySet()));
 

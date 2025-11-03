@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Timetable {
 
-    private HashMap<DayOfWeek, TreeMap<TimeOfDay, ArrayList<TrainingSession>>> timetable;
+    private Map<DayOfWeek, Map<TimeOfDay, List<TrainingSession>>> timetable;
 
     public Timetable() {
         timetable = new HashMap<>();
         for (DayOfWeek dayOfWeek : DayOfWeek.values()) {
-            TreeMap<TimeOfDay, ArrayList<TrainingSession>> treeMap = new TreeMap<>();
+            Map<TimeOfDay, List<TrainingSession>> treeMap = new TreeMap<>();
             timetable.put(dayOfWeek, treeMap);
         }
     }
@@ -18,19 +18,19 @@ public class Timetable {
         DayOfWeek day = trainingSession.getDayOfWeek();
         TimeOfDay time = trainingSession.getTimeOfDay();
         if (!timetable.get(day).containsKey(time)) { // если день в расписании есть, но в его TreeMap пока нет нужного времени
-            ArrayList<TrainingSession> trainingSessions = new ArrayList<>();
+            List<TrainingSession> trainingSessions = new ArrayList<>();
             timetable.get(day).put(time, trainingSessions);
         }
         timetable.get(day).get(time).add(trainingSession); // get(day) и get(time), благодаря проверкам выше,
         // работают всегда правильно
     }
 
-    public TreeMap<TimeOfDay, ArrayList<TrainingSession>> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
+    public Map<TimeOfDay, List<TrainingSession>> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
         return timetable.get(dayOfWeek);
     }
 
     public ArrayList<TrainingSession> getTrainingSessionsForDayAndTime(DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
-        return timetable.get(dayOfWeek).get(timeOfDay);
+        return (ArrayList<TrainingSession>) timetable.get(dayOfWeek).get(timeOfDay);
     }
 
     public ArrayList<CounterOfTrainings> getCountByCoaches() {
