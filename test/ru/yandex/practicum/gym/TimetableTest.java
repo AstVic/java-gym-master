@@ -175,7 +175,8 @@ public class TimetableTest {
         Assertions.assertEquals(0, result.size());
     }
 
-    @Test// Test 2 for countOfTrainings
+    @Test
+// Test 2 for countOfTrainings
     void testGetCountByCoachesSameCounts() {
         Timetable timetable = new Timetable();
 
@@ -200,7 +201,8 @@ public class TimetableTest {
         Assertions.assertEquals(coach1, result.get(1).getCoach());
     }
 
-    @Test// Test 3 for countOfTrainings
+    @Test
+// Test 3 for countOfTrainings
     void testGetCountByCoachesMultipleCoachesDifferentCounts() {
         Timetable timetable = new Timetable();
 

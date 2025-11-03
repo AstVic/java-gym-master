@@ -8,7 +8,7 @@ public class Timetable {
 
     public Timetable() {
         timetable = new HashMap<>();
-        for (DayOfWeek dayOfWeek: DayOfWeek.values()) {
+        for (DayOfWeek dayOfWeek : DayOfWeek.values()) {
             TreeMap<TimeOfDay, ArrayList<TrainingSession>> treeMap = new TreeMap<>();
             timetable.put(dayOfWeek, treeMap);
         }
@@ -26,7 +26,7 @@ public class Timetable {
     }
 
     public TreeMap<TimeOfDay, ArrayList<TrainingSession>> getTrainingSessionsForDay(DayOfWeek dayOfWeek) {
-       return timetable.get(dayOfWeek);
+        return timetable.get(dayOfWeek);
     }
 
     public ArrayList<TrainingSession> getTrainingSessionsForDayAndTime(DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
@@ -35,9 +35,9 @@ public class Timetable {
 
     public ArrayList<CounterOfTrainings> getCountByCoaches() {
         HashMap<Coach, Integer> countOfTrainingsForAllCoaches = new HashMap<>();
-        for (DayOfWeek keyDay: timetable.keySet()) {
-            for (TimeOfDay keyTime: timetable.get(keyDay).keySet()) {
-                for (TrainingSession trainingSession: timetable.get(keyDay).get(keyTime)) {
+        for (DayOfWeek keyDay : timetable.keySet()) {
+            for (TimeOfDay keyTime : timetable.get(keyDay).keySet()) {
+                for (TrainingSession trainingSession : timetable.get(keyDay).get(keyTime)) {
                     Coach coach = trainingSession.getCoach();
                     if (!countOfTrainingsForAllCoaches.containsKey(coach)) {
                         countOfTrainingsForAllCoaches.put(coach, 1);
@@ -48,7 +48,7 @@ public class Timetable {
             }
         }
         ArrayList<CounterOfTrainings> arrayList = new ArrayList<>();
-        for (Coach coach: countOfTrainingsForAllCoaches.keySet()) {
+        for (Coach coach : countOfTrainingsForAllCoaches.keySet()) {
             arrayList.add(new CounterOfTrainings(coach, countOfTrainingsForAllCoaches.get(coach)));
         }
         arrayList.sort(Comparator.reverseOrder());
