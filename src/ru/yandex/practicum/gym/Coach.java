@@ -41,4 +41,16 @@ public class Coach {
     public String getMiddleName() {
         return middleName;
     }
+
+    public int compareTo(Coach coach) {
+        if (this.name.equals(coach.name)) {
+            if (this.surname.equals((coach.surname))) {
+                return this.middleName.compareTo(coach.middleName);
+            } else {
+                return this.surname.compareTo(coach.surname);
+            }
+        } else {
+            return this.name.compareTo(coach.name);
+        }
+    }
 }
